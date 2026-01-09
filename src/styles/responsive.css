@@ -1,0 +1,373 @@
+/* ==========================================================================
+   Neon Pulse Calculator - Responsive Styles
+   Mobile-First Approach
+   ========================================================================== */
+
+/* ===== Base (Mobile - < 480px) ===== */
+/* Default styles are for the smallest screens */
+
+.container {
+    width: 100%;
+    padding: var(--space-md);
+}
+
+.card {
+    padding: var(--space-lg);
+    border-radius: var(--radius-xl);
+}
+
+.nav-tabs {
+    flex-direction: row;
+    gap: var(--space-xs);
+}
+
+.nav-tab {
+    padding: var(--space-sm) var(--space-md);
+}
+
+.nav-tab-icon {
+    font-size: var(--font-size-xl);
+}
+
+.nav-tab-label {
+    font-size: var(--font-size-xs);
+}
+
+.nav-tab-sublabel {
+    display: none;
+}
+
+.calc-display {
+    font-size: var(--font-size-2xl);
+    padding: var(--space-md) var(--space-lg);
+    min-height: 60px;
+}
+
+.calc-btn {
+    padding: var(--space-sm);
+    font-size: var(--font-size-lg);
+}
+
+.calculator-grid {
+    gap: var(--space-xs);
+}
+
+.btn {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-size-sm);
+}
+
+.btn-primary {
+    width: 100%;
+}
+
+.form-row {
+    flex-direction: column;
+}
+
+.result-value {
+    font-size: var(--font-size-xl);
+}
+
+/* ===== Small Phones (480px+) ===== */
+@media (min-width: 480px) {
+    .container {
+        padding: var(--space-lg);
+    }
+
+    .card {
+        padding: var(--space-xl);
+    }
+
+    .nav-tab {
+        padding: var(--space-md) var(--space-lg);
+    }
+
+    .nav-tab-sublabel {
+        display: block;
+    }
+
+    .calc-display {
+        font-size: var(--font-size-3xl);
+        padding: var(--space-lg) var(--space-xl);
+        min-height: 70px;
+    }
+
+    .calc-btn {
+        padding: var(--space-md);
+        font-size: var(--font-size-xl);
+    }
+
+    .calculator-grid {
+        gap: var(--space-sm);
+    }
+
+    .btn {
+        padding: var(--space-md) var(--space-xl);
+        font-size: var(--font-size-base);
+    }
+
+    .form-row {
+        flex-direction: row;
+    }
+
+    .result-value {
+        font-size: var(--font-size-2xl);
+    }
+}
+
+/* ===== Tablets (768px+) ===== */
+@media (min-width: 768px) {
+    .app {
+        padding: var(--space-xl);
+    }
+
+    .container {
+        max-width: 520px;
+    }
+
+    .card {
+        padding: var(--space-2xl);
+        border-radius: var(--radius-2xl);
+    }
+
+    .nav-tabs {
+        gap: var(--space-md);
+        padding: var(--space-sm);
+    }
+
+    .nav-tab {
+        padding: var(--space-md) var(--space-xl);
+    }
+
+    .nav-tab-icon {
+        font-size: var(--font-size-2xl);
+    }
+
+    .nav-tab-label {
+        font-size: var(--font-size-sm);
+    }
+
+    .section-title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .calc-display {
+        font-size: var(--font-size-display);
+        min-height: 90px;
+    }
+
+    .calc-btn {
+        font-size: var(--font-size-2xl);
+    }
+
+    .btn-primary {
+        width: auto;
+        min-width: 200px;
+    }
+}
+
+/* ===== Laptops / Small Desktops (1024px+) ===== */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 560px;
+    }
+
+    .card {
+        padding: var(--space-2xl) var(--space-3xl);
+    }
+
+    /* Hover effects only on devices that support them */
+    @media (hover: hover) {
+        .nav-tab:hover {
+            transform: translateY(-2px);
+        }
+
+        .calc-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+        }
+    }
+}
+
+/* ===== Large Desktops (1440px+) ===== */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 600px;
+    }
+
+    .app {
+        padding: var(--space-3xl);
+    }
+
+    .calc-btn {
+        font-size: var(--font-size-3xl);
+    }
+
+    .calc-display {
+        min-height: 100px;
+    }
+}
+
+/* ===== Ultra Wide / 4K (2560px+) ===== */
+@media (min-width: 2560px) {
+    :root {
+        /* Prevent text from becoming too large on 4K */
+        --font-size-base: 1.125rem;
+        --font-size-lg: 1.375rem;
+        --font-size-xl: 1.75rem;
+        --font-size-2xl: 2.25rem;
+        --font-size-3xl: 3rem;
+    }
+
+    .container {
+        max-width: 700px;
+    }
+
+    .card {
+        padding: var(--space-3xl);
+    }
+}
+
+/* ===== Landscape Mobile ===== */
+@media (max-height: 500px) and (orientation: landscape) {
+    .app {
+        padding: var(--space-sm);
+        justify-content: flex-start;
+    }
+
+    .card {
+        padding: var(--space-md);
+    }
+
+    .section-header {
+        margin-bottom: var(--space-md);
+    }
+
+    .section-title {
+        font-size: var(--font-size-lg);
+    }
+
+    .nav-tabs {
+        margin-bottom: var(--space-md);
+    }
+
+    .calculator-grid {
+        gap: var(--space-2xs);
+    }
+
+    .calc-btn {
+        padding: var(--space-xs);
+        font-size: var(--font-size-base);
+    }
+
+    .calc-display {
+        min-height: 50px;
+        font-size: var(--font-size-xl);
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .history-panel {
+        max-height: 100px;
+    }
+}
+
+/* ===== Touch Device Optimizations ===== */
+@media (pointer: coarse) {
+    /* Larger touch targets */
+    .calc-btn {
+        min-height: 48px;
+    }
+
+    .btn {
+        min-height: 44px;
+    }
+
+    .nav-tab {
+        min-height: 60px;
+    }
+
+    /* Remove hover effects that might cause issues */
+    .calc-btn:hover {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    .app {
+        background: white;
+        min-height: auto;
+    }
+
+    .card {
+        background: white;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+
+    .nav-tabs {
+        display: none;
+    }
+
+    .btn-primary {
+        display: none;
+    }
+
+    .result-container {
+        border: 2px solid #333;
+    }
+
+    .result-value {
+        color: #333;
+        text-shadow: none;
+    }
+}
+
+/* ===== Reduced Motion Preference ===== */
+@media (prefers-reduced-motion: reduce) {
+    .app::after {
+        animation: none;
+    }
+
+    .btn-primary {
+        animation: none;
+    }
+
+    .animate-glow,
+    .animate-pulse,
+    .animate-float {
+        animation: none;
+    }
+}
+
+/* ===== Dark Mode (Already Default) ===== */
+/* Light mode preference - if user prefers light */
+@media (prefers-color-scheme: light) {
+    /* Keep dark theme as it's the design choice */
+    /* Could add light theme toggle in future */
+}
+
+/* ===== High Contrast Mode ===== */
+@media (prefers-contrast: high) {
+    :root {
+        --color-glass-border: rgba(255, 255, 255, 0.3);
+        --color-text-secondary: rgba(255, 255, 255, 0.9);
+    }
+
+    .card {
+        border-width: 2px;
+    }
+
+    .calc-btn {
+        border-width: 2px;
+    }
+
+    .input,
+    .select {
+        border-width: 2px;
+    }
+}

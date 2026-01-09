@@ -1,489 +1,315 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة النسبة المئوية وآلة حاسبة</title>
+    <meta name="description" content="حاسبة النسبة المئوية والآلة الحاسبة - تجربة حديثة وتفاعلية">
+    <meta name="theme-color" content="#0a0e27">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <title>🧮 Neon Pulse Calculator | حاسبة النيون</title>
+    
+    <!-- Preload Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="src/styles/base.css">
+    <link rel="stylesheet" href="src/styles/layout.css">
+    <link rel="stylesheet" href="src/styles/components.css">
+    <link rel="stylesheet" href="src/styles/animations.css">
+    <link rel="stylesheet" href="src/styles/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+    
     <style>
-        /* تصميم CSS */
-        body {
-            background: linear-gradient(to bottom, #e6f0ff, #b3c7e6);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: white;
-            overflow: hidden;
-        }
-
-        .container {
-            max-width: 90%;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 20px;
+        /* Header Brand Styles */
+        .brand-header {
             text-align: center;
-            background-color: #f0f4ff;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: var(--space-xl);
+            padding-top: var(--space-md);
         }
-
-        .icon-container {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+        
+        .brand-name {
+            font-family: var(--font-family-display);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            letter-spacing: 0.3em;
+            color: var(--color-neon-cyan);
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
         }
-
-        .icon {
-            background: linear-gradient(45deg, #ff6ec4, #7873f5);
-            padding: 20px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            display: flex;
-            flex-direction: column;
+        
+        /* Footer Styles */
+        .footer {
+            text-align: center;
+            padding: var(--space-xl) var(--space-md);
+            margin-top: var(--space-2xl);
+        }
+        
+        .footer-copyright {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-badge {
+            display: inline-flex;
             align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-lg);
+            background: linear-gradient(135deg, #00d4aa, #00b4d8);
+            border-radius: var(--radius-full);
+            color: var(--color-bg-primary);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+        }
+        
+        .footer-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Action Buttons Row */
+        .action-buttons {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
             justify-content: center;
-            width: 100px;
-            height: 100px;
+            margin-top: var(--space-lg);
         }
-
-        .icon:hover {
-            transform: scale(1.1);
-            background: linear-gradient(45deg, #ff8fcf, #9c93ff);
+        
+        .action-buttons .btn {
+            flex: 1;
+            min-width: 140px;
+            max-width: 200px;
+            white-space: nowrap;
         }
-
-        .icon p {
-            margin: 0;
+        
+        /* Clear Button */
+        .btn-clear {
+            background: rgba(255, 71, 87, 0.15);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            color: var(--color-error);
         }
-
-        h1 {
-            color: #333;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        label {
-            margin-top: 10px;
-            color: #333;
-            font-weight: bold;
-        }
-
-        input[type="number"],
-        select {
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 10px;
-            background-color: #d4e0ff;
-            color: #333;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .button-container {
-            margin-top: 20px;
-            display: flex;
-            gap: 15px;
-            justify-content: space-between;
-        }
-
-        /* تصميم زر احسب */
-        .neon-button {
-            background: linear-gradient(45deg, #4682b4, #5f9ea0);
-            border: none;
-            border-radius: 50px;
-            padding: 15px 60px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .neon-button:hover {
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.4);
-            transform: translateY(-5px);
-        }
-
-        .neon-button:active {
-            transform: translateY(0);
-        }
-
-        .use-calculator-result {
-            background: linear-gradient(45deg, #4682b4, #5f9ea0);
-            border: none;
-            border-radius: 50px;
-            padding: 15px 60px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .use-calculator-result:hover {
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.4);
-            transform: translateY(-5px);
-        }
-
-        .use-calculator-result:active {
-            transform: translateY(0);
-        }
-
-        #result {
-            margin-top: 20px;
-            font-size: 20px;
-            color: #333;
-        }
-
-        #calculator-section,
-        #percentage-section {
-            display: none;
-        }
-
-        /* آلة الحاسبة */
-        .calculator {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 10px;
-            margin-top: 20px;
-        }
-
-        .calculator button {
-            font-size: 24px;
-            padding: 20px;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(45deg, #4682b4, #5f9ea0);
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .calculator button:hover {
-            background: linear-gradient(45deg, #5f9ea0, #7fbfbf);
-        }
-
-        .calculator input {
-            grid-column: span 4;
-            padding: 20px;
-            font-size: 24px;
-            border-radius: 10px;
-            border: none;
-            text-align: right;
-            background-color: #d4e0ff;
-            color: #333;
-            outline: none;
-        }
-
-        .calculate-button {
-            grid-column: span 4;
-            padding: 15px 0;
-        }
-
-        /* سجل العمليات */
-        .history {
-            margin-top: 20px;
-            background-color: #d4e0ff;
-            padding: 10px;
-            border-radius: 10px;
-            color: #333;
-            max-height: 150px;
-            overflow-y: auto;
-            text-align: left;
-        }
-
-        .toggle-history-button {
-            background: linear-gradient(45deg, #ff6ec4, #7873f5);
-            border: none;
-            border-radius: 50px;
-            padding: 10px 30px;
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            margin-top: 20px;
-        }
-
-        .toggle-history-button:hover {
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 50px rgba(255, 255, 255, 0.4);
-            transform: translateY(-5px);
-        }
-
-        .toggle-history-button:active {
-            transform: translateY(0);
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-                max-width: 95%;
-            }
-
-            .icon {
-                width: 70px;
-                height: 70px;
-            }
-
-            .neon-button {
-                font-size: 14px;
-                padding: 10px 30px;
-            }
-
-            .use-calculator-result {
-                font-size: 14px;
-                padding: 10px 30px;
-            }
-
-            .calculator button {
-                font-size: 18px;
-                padding: 15px;
-            }
-
-            .calculator input {
-                font-size: 18px;
-                padding: 15px;
-            }
-
-            .toggle-history-button {
-                font-size: 12px;
-                padding: 8px 20px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 800px;
-            }
-
-            .neon-button {
-                font-size: 20px;
-                padding: 20px 80px;
-            }
-
-            .use-calculator-result {
-                font-size: 20px;
-                padding: 20px 80px;
-            }
-
-            .calculator button {
-                font-size: 26px;
-                padding: 25px;
-            }
-
-            .calculator input {
-                font-size: 26px;
-                padding: 25px;
-            }
+        
+        .btn-clear:hover {
+            background: rgba(255, 71, 87, 0.25);
+            border-color: var(--color-error);
+            box-shadow: 0 0 20px rgba(255, 71, 87, 0.3);
         }
     </style>
 </head>
 <body>
+    <div class="app">
+        <div class="container">
+            <!-- Brand Header -->
+            <header class="brand-header">
+                <span class="brand-name">FALCON01 TEAM</span>
+            </header>
+            
+            <div class="card">
+                <!-- Navigation Tabs -->
+                <nav class="nav-tabs" role="tablist" aria-label="التنقل بين الأقسام">
+                    <button class="nav-tab active" 
+                            data-section="percentage" 
+                            role="tab" 
+                            aria-selected="true"
+                            aria-controls="percentage-section">
+                        <span class="nav-tab-icon">📊</span>
+                        <span class="nav-tab-label">النسبة المئوية</span>
+                        <span class="nav-tab-sublabel">حساب النسب</span>
+                    </button>
+                    <button class="nav-tab" 
+                            data-section="calculator" 
+                            role="tab" 
+                            aria-selected="false"
+                            aria-controls="calculator-section">
+                        <span class="nav-tab-icon">🔢</span>
+                        <span class="nav-tab-label">آلة حاسبة</span>
+                        <span class="nav-tab-sublabel">حسابات متقدمة</span>
+                    </button>
+                </nav>
 
-    <div class="container">
-        <div class="icon-container">
-            <div class="icon" onclick="showSectionMobile('percentage')">
-                <p>النسبة المئوية</p>
-                <small>احسب النسبة المئوية </small>
+                <!-- Percentage Section -->
+                <section id="percentage-section" 
+                         class="section active" 
+                         role="tabpanel" 
+                         aria-labelledby="النسبة المئوية">
+                    
+                    <header class="section-header">
+                        <h1 class="section-title">حاسبة النسبة المئوية</h1>
+                        <p class="section-subtitle">احسب النسب بسهولة ودقة</p>
+                    </header>
+
+                    <form id="percentage-form" class="form">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label class="input-label" for="percentage">النسبة المئوية (%)</label>
+                                <input type="number" 
+                                       id="percentage" 
+                                       class="input" 
+                                       placeholder="مثال: 25"
+                                       step="any"
+                                       required
+                                       aria-describedby="percentage-help">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label class="input-label" for="number">العدد</label>
+                                <input type="number" 
+                                       id="number" 
+                                       class="input" 
+                                       placeholder="مثال: 1000"
+                                       step="any"
+                                       required
+                                       aria-describedby="number-help">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" for="method">طريقة الحساب</label>
+                            <select id="method" class="select" required>
+                                <option value="extract">استخراج النسبة من العدد</option>
+                                <option value="add">إضافة النسبة إلى العدد</option>
+                                <option value="subtract">طرح النسبة من العدد</option>
+                            </select>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button type="button" class="btn btn-clear" onclick="clearPercentageForm()">
+                                <span>🗑️</span>
+                                <span>مسح</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary btn-use-calculator">
+                                <span>📥</span>
+                                <span>من الآلة</span>
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <span>✨</span>
+                                <span>احسب</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Result Container -->
+                    <div id="percentage-result" class="result-container hidden">
+                        <div class="result-label">النتيجة</div>
+                        <div id="result-value" class="result-value">0</div>
+                    </div>
+                </section>
+
+                <!-- Calculator Section -->
+                <section id="calculator-section" 
+                         class="section" 
+                         role="tabpanel" 
+                         aria-labelledby="آلة حاسبة">
+                    
+                    <header class="section-header">
+                        <h1 class="section-title">آلة حاسبة متقدمة</h1>
+                        <p class="section-subtitle">حسابات دقيقة وسريعة</p>
+                    </header>
+
+                    <div class="calculator-grid">
+                        <!-- Display -->
+                        <input type="text" 
+                               id="calc-display" 
+                               class="input calc-display calculator-display" 
+                               placeholder="0"
+                               readonly
+                               aria-label="شاشة الآلة الحاسبة">
+
+                        <!-- Row 1: Functions -->
+                        <button class="calc-btn calc-btn-function" onclick="clearDisplay()" aria-label="مسح الكل">C</button>
+                        <button class="calc-btn calc-btn-function" onclick="appendToDisplay('(')" aria-label="قوس فتح">(</button>
+                        <button class="calc-btn calc-btn-function" onclick="appendToDisplay(')')" aria-label="قوس إغلاق">)</button>
+                        <button class="calc-btn calc-btn-operator" onclick="appendToDisplay('/')" aria-label="قسمة">÷</button>
+
+                        <!-- Row 2: 7-8-9-× -->
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('7')">7</button>
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('8')">8</button>
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('9')">9</button>
+                        <button class="calc-btn calc-btn-operator" onclick="appendToDisplay('*')" aria-label="ضرب">×</button>
+
+                        <!-- Row 3: 4-5-6-- -->
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('4')">4</button>
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('5')">5</button>
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('6')">6</button>
+                        <button class="calc-btn calc-btn-operator" onclick="appendToDisplay('-')" aria-label="طرح">−</button>
+
+                        <!-- Row 4: 1-2-3-+ -->
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('1')">1</button>
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('2')">2</button>
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('3')">3</button>
+                        <button class="calc-btn calc-btn-operator" onclick="appendToDisplay('+')" aria-label="جمع">+</button>
+
+                        <!-- Row 5: 0-00-.-⌫ -->
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('0')">0</button>
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('00')">00</button>
+                        <button class="calc-btn calc-btn-number" onclick="appendToDisplay('.')">.</button>
+                        <button class="calc-btn calc-btn-function" onclick="deleteLastCharacter()" aria-label="حذف">⌫</button>
+
+                        <!-- Calculate Button -->
+                        <button class="calc-btn calc-btn-equals calculator-btn-full" onclick="calculate()">
+                            احسب العملية =
+                        </button>
+                    </div>
+
+                    <!-- History Toggle -->
+                    <div class="text-center" style="margin-top: var(--space-lg);">
+                        <button class="toggle-btn btn-toggle-history" aria-expanded="false">
+                            <span>📜</span>
+                            <span>إظهار السجل</span>
+                        </button>
+                    </div>
+
+                    <!-- History Panel -->
+                    <div id="calc-history" class="history-panel hidden" aria-label="سجل العمليات">
+                        <div class="history-empty">
+                            <span>لا توجد عمليات سابقة</span>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <div class="icon" onclick="showSectionMobile('calculator')">
-                <p>آلة حاسبة</p>
-                <small>آلة حاسبة متكاملة </small>
-            </div>
-        </div>
 
-        <!-- قسم حاسبة النسبة المئوية -->
-        <div id="percentage-section">
-            <h1>حاسبة النسبة المئوية</h1>
-            <form id="calculator-form">
-                <label for="percentage">النسبة المئوية (%)</label>
-                <input type="number" id="percentage" name="percentage" required>
-
-                <label for="number">العدد</label>
-                <input type="number" id="number" name="number" required>
-
-                <label for="method">طريقة الحساب</label>
-                <select id="method" name="method">
-                    <option value="extract">استخراج النسبة المئوية من العدد</option>
-                    <option value="add">إضافة النسبة المئوية إلى العدد</option>
-                    <option value="subtract">طرح النسبة المئوية من العدد</option>
-                </select>
-
-                <div class="button-container">
-                    <button type="button" onclick="useCalculatorResult()" class="use-calculator-result" style="align-self: flex-start;">استخدام الرقم من الآلة</button>
-                    <button type="submit" class="neon-button" style="align-self: flex-end;">احسب</button>
+            <!-- Footer -->
+            <footer class="footer">
+                <p class="footer-copyright">© 2026 Falcon01 Team. All Rights Reserved.</p>
+                <div class="footer-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+                    </svg>
+                    <span>Official Certified Site</span>
                 </div>
-            </form>
-
-            <div id="result"></div>
-        </div>
-
-        <!-- قسم الآلة الحاسبة المتكاملة -->
-        <div id="calculator-section">
-            <h1>آلة حاسبة متكاملة</h1>
-            <div class="calculator">
-                <input type="text" id="calc-display" disabled>
-                <button onclick="clearDisplay()">C</button>
-                <button onclick="appendToDisplay('(')">(</button>
-                <button onclick="appendToDisplay(')')">)</button>
-                <button onclick="appendToDisplay('/')">&#247;</button>
-                <button onclick="appendToDisplay('7')">7</button>
-                <button onclick="appendToDisplay('8')">8</button>
-                <button onclick="appendToDisplay('9')">9</button>
-                <button onclick="appendToDisplay('*')">&#215;</button>
-                <button onclick="appendToDisplay('4')">4</button>
-                <button onclick="appendToDisplay('5')">5</button>
-                <button onclick="appendToDisplay('6')">6</button>
-                <button onclick="appendToDisplay('-')">-</button>
-                <button onclick="appendToDisplay('1')">1</button>
-                <button onclick="appendToDisplay('2')">2</button>
-                <button onclick="appendToDisplay('3')">3</button>
-                <button onclick="appendToDisplay('+')">+</button>
-                <button onclick="appendToDisplay('0')">0</button>
-                <button onclick="appendToDisplay('00')">00</button>
-                <button onclick="appendToDisplay('000')">000</button>
-                <button onclick="appendToDisplay('.')">.</button>
-                <button onclick="deleteLastCharacter()">⌫</button>
-                <button class="neon-button calculate-button" onclick="calculate()">احسب العملية</button>
-            </div>
-            <button class="toggle-history-button" onclick="toggleHistory()">إظهار/إخفاء السجل</button>
-            <div class="history" id="calc-history"></div>
+            </footer>
         </div>
     </div>
 
+    <!-- Math.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.2/math.min.js"></script>
+    
+    <!-- Application Scripts -->
+    <script src="src/scripts/animations.js"></script>
+    <script src="src/scripts/calculator.js"></script>
+    <script src="src/scripts/percentage.js"></script>
+    <script src="src/scripts/app.js"></script>
+    
     <script>
-        // إظهار القسم المناسب للموبايل
-        function showSectionMobile(section) {
-            const calculatorSection = document.getElementById('calculator-section');
-            const percentageSection = document.getElementById('percentage-section');
-
-            calculatorSection.style.display = 'none';
-            percentageSection.style.display = 'none';
-
-            if (section === 'calculator') {
-                calculatorSection.style.display = 'block';
-            } else if (section === 'percentage') {
-                percentageSection.style.display = 'block';
-            }
-        }
-
-        // كشف نوع الجهاز وتطبيق الدالة المناسبة
-        window.onload = function() {
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            if (isMobile) {
-                document.querySelectorAll('.icon').forEach(icon => {
-                    icon.setAttribute('onclick', icon.getAttribute('onclick').replace('showSectionMobile', 'showSectionMobile'));
-                });
-            } else {
-                document.querySelectorAll('.icon').forEach(icon => {
-                    icon.setAttribute('onclick', icon.getAttribute('onclick').replace('showSectionMobile', 'showSectionMobile'));
-                });
-            }
-        }
-
-        // حساب النسبة المئوية
-        const form = document.getElementById('calculator-form');
-        const resultDiv = document.getElementById('result');
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const percentage = parseFloat(document.getElementById('percentage').value);
-            const number = parseFloat(document.getElementById('number').value);
-            const method = document.getElementById('method').value;
-
-            if (isNaN(percentage) || isNaN(number)) {
-                resultDiv.textContent = 'يرجى إدخال أرقام صحيحة.';
-                resultDiv.style.color = 'red';
-                return;
-            } else {
-                resultDiv.style.color = '#333';
-            }
-
-            let result;
-
-            if (method === 'extract') {
-                result = (percentage / 100) * number;
-                resultDiv.textContent = `${percentage}% من ${number} يساوي ${result}`;
-            } else if (method === 'add') {
-                result = number + (percentage / 100) * number;
-                resultDiv.textContent = `إضافة ${percentage}% إلى ${number} يساوي ${result}`;
-            } else if (method === 'subtract') {
-                result = number - (percentage / 100) * number;
-                resultDiv.textContent = `طرح ${percentage}% من ${number} يساوي ${result}`;
-            }
-        });
-
-        // وظائف الآلة الحاسبة المتكاملة
-        const historyDiv = document.getElementById('calc-history');
-
-        function appendToDisplay(value) {
-            const display = document.getElementById('calc-display');
-            display.value += value;
-        }
-
-        function clearDisplay() {
-            const display = document.getElementById('calc-display');
-            display.value = '';
-        }
-
-        function deleteLastCharacter() {
-            const display = document.getElementById('calc-display');
-            display.value = display.value.slice(0, -1);
-        }
-
-        function calculate() {
-            const display = document.getElementById('calc-display');
-            try {
-                const result = math.evaluate(display.value); // استخدام مكتبة Math.js لزيادة الأمان والدقة
-                historyDiv.innerHTML += `<div>${display.value} = ${result}</div>`;
-                display.value = result;
-            } catch (error) {
-                display.value = 'خطأ';
-            }
-        }
-
-        // استخدام نتيجة الآلة الحاسبة في حاسبة النسبة المئوية
-        function useCalculatorResult() {
-            const display = document.getElementById('calc-display');
-            const numberInput = document.getElementById('number');
-            if (display.value && !isNaN(display.value)) {
-                numberInput.value = parseFloat(display.value);
-            }
-        }
-
-        // إظهار أو إخفاء السجل
-        function toggleHistory() {
-            const history = document.getElementById('calc-history');
-            if (history.style.display === 'none' || history.style.display === '') {
-                history.style.display = 'block';
-            } else {
-                history.style.display = 'none';
+        // Clear percentage form function
+        function clearPercentageForm() {
+            document.getElementById('percentage').value = '';
+            document.getElementById('number').value = '';
+            document.getElementById('method').selectedIndex = 0;
+            const resultContainer = document.getElementById('percentage-result');
+            if (resultContainer) {
+                resultContainer.classList.add('hidden');
             }
         }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.1/math.min.js"></script>
 </body>
 </html>

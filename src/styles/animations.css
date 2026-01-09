@@ -1,0 +1,339 @@
+/* ==========================================================================
+   Neon Pulse Calculator - Animation Styles
+   ========================================================================== */
+
+/* ===== Keyframe Animations ===== */
+
+/* Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Fade In Up */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In Down */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scale In */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Bounce In */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Pulse */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Glow Pulse */
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(0, 245, 255, 0.4),
+            0 0 40px rgba(0, 245, 255, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(0, 245, 255, 0.6),
+            0 0 60px rgba(0, 245, 255, 0.3);
+    }
+}
+
+/* Shimmer */
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* Float */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Shake - For Error State */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+/* Ripple */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Rotate */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Number Count Up - For Result Display */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===== Animation Classes ===== */
+
+/* Fade Animations */
+.animate-fade-in {
+    animation: fadeIn var(--transition-slow) ease-out;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp var(--transition-slow) ease-out;
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown var(--transition-slow) ease-out;
+}
+
+/* Scale Animations */
+.animate-scale-in {
+    animation: scaleIn var(--transition-base) ease-out;
+}
+
+.animate-bounce-in {
+    animation: bounceIn var(--transition-slow) ease-out;
+}
+
+/* Continuous Animations */
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-glow {
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-rotate {
+    animation: rotate 1s linear infinite;
+}
+
+/* State Animations */
+.animate-shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+.animate-count-up {
+    animation: countUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ===== Transition Utilities ===== */
+.transition-all {
+    transition: all var(--transition-base);
+}
+
+.transition-fast {
+    transition: all var(--transition-fast);
+}
+
+.transition-slow {
+    transition: all var(--transition-slow);
+}
+
+.transition-bounce {
+    transition: all var(--transition-bounce);
+}
+
+/* ===== Hover Effects ===== */
+
+/* Lift Effect */
+.hover-lift {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Scale Effect */
+.hover-scale {
+    transition: transform var(--transition-fast);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Glow Effect */
+.hover-glow {
+    transition: box-shadow var(--transition-base);
+}
+
+.hover-glow:hover {
+    box-shadow: var(--shadow-neon-cyan);
+}
+
+/* ===== Button Press Effect ===== */
+.btn-press {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-press::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    transition: none;
+}
+
+.btn-press:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+/* ===== Loading State ===== */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    border-radius: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--color-glass-border);
+    border-top-color: var(--color-neon-cyan);
+    border-radius: 50%;
+    animation: rotate 0.8s linear infinite;
+}
+
+/* ===== Shimmer Loading Effect ===== */
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        var(--color-glass-white) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        var(--color-glass-white) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ===== Stagger Animation Delays ===== */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+.stagger-7 { animation-delay: 0.7s; }
+.stagger-8 { animation-delay: 0.8s; }
+
+/* Initial State for Staggered Elements */
+.stagger-init {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.stagger-animate {
+    animation: fadeInUp 0.4s ease-out forwards;
+}

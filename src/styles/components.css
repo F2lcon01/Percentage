@@ -1,0 +1,360 @@
+/* ==========================================================================
+   Neon Pulse Calculator - Component Styles
+   ========================================================================== */
+
+/* ===== Buttons ===== */
+
+/* Base Button */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-md) var(--space-xl);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(255,255,255,0.2), transparent);
+    opacity: 0;
+    transition: var(--transition-fast);
+}
+
+.btn:hover::before {
+    opacity: 1;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+/* Primary Button - Neon Gradient */
+.btn-primary {
+    background: var(--gradient-button);
+    background-size: 200% 200%;
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-neon-cyan);
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 0 30px rgba(0, 245, 255, 0.5),
+        0 0 60px rgba(178, 75, 255, 0.3);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background: var(--color-glass-white);
+    border: 1px solid var(--color-glass-border);
+    color: var(--color-text-primary);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: var(--color-glass-hover);
+    border-color: var(--color-neon-cyan);
+    box-shadow: var(--shadow-neon-cyan);
+}
+
+/* Ghost Button */
+.btn-ghost {
+    background: transparent;
+    color: var(--color-neon-cyan);
+    border: 1px solid var(--color-neon-cyan);
+}
+
+.btn-ghost:hover {
+    background: rgba(0, 245, 255, 0.1);
+    box-shadow: var(--shadow-neon-cyan);
+}
+
+/* Icon Button */
+.btn-icon {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: var(--radius-lg);
+}
+
+/* ===== Calculator Buttons ===== */
+.calc-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    background: var(--color-glass-white);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
+    aspect-ratio: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.calc-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: var(--transition-fast);
+}
+
+.calc-btn:hover {
+    background: var(--color-glass-hover);
+    border-color: var(--color-neon-cyan);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.calc-btn:hover::before {
+    opacity: 1;
+}
+
+.calc-btn:active {
+    transform: translateY(0) scale(0.95);
+}
+
+/* Number Buttons */
+.calc-btn-number {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.calc-btn-number:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Operator Buttons */
+.calc-btn-operator {
+    background: rgba(178, 75, 255, 0.2);
+    border-color: rgba(178, 75, 255, 0.3);
+    color: var(--color-neon-purple);
+}
+
+.calc-btn-operator:hover {
+    background: rgba(178, 75, 255, 0.3);
+    border-color: var(--color-neon-purple);
+    box-shadow: var(--shadow-neon-purple);
+}
+
+/* Function Buttons (Clear, Delete) */
+.calc-btn-function {
+    background: rgba(255, 60, 142, 0.15);
+    border-color: rgba(255, 60, 142, 0.3);
+    color: var(--color-neon-pink);
+}
+
+.calc-btn-function:hover {
+    background: rgba(255, 60, 142, 0.25);
+    border-color: var(--color-neon-pink);
+    box-shadow: var(--shadow-neon-pink);
+}
+
+/* Equals/Calculate Button */
+.calc-btn-equals {
+    aspect-ratio: auto;
+    background: var(--gradient-primary);
+    border: none;
+    color: var(--color-bg-primary);
+    font-weight: var(--font-weight-bold);
+    box-shadow: var(--shadow-neon-cyan);
+}
+
+.calc-btn-equals:hover {
+    box-shadow: 
+        0 0 30px rgba(0, 245, 255, 0.5),
+        0 0 50px rgba(178, 75, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ===== Inputs ===== */
+
+/* Base Input */
+.input {
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-lg);
+    outline: none;
+    transition: all var(--transition-base);
+}
+
+.input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.input:hover {
+    border-color: rgba(0, 245, 255, 0.3);
+}
+
+.input:focus {
+    border-color: var(--color-neon-cyan);
+    box-shadow: 
+        0 0 0 3px rgba(0, 245, 255, 0.1),
+        var(--shadow-neon-cyan);
+}
+
+/* Calculator Display */
+.calc-display {
+    padding: var(--space-lg) var(--space-xl);
+    font-size: var(--font-size-3xl);
+    text-align: left;
+    direction: ltr;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--color-glass-border);
+    color: var(--color-neon-cyan);
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+    min-height: 80px;
+}
+
+/* Input with Label */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.input-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+}
+
+/* ===== Select ===== */
+.select {
+    appearance: none;
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    padding-left: 40px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-lg);
+    outline: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300f5ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 12px center;
+    background-size: 20px;
+}
+
+.select:hover {
+    border-color: rgba(0, 245, 255, 0.3);
+}
+
+.select:focus {
+    border-color: var(--color-neon-cyan);
+    box-shadow: 
+        0 0 0 3px rgba(0, 245, 255, 0.1),
+        var(--shadow-neon-cyan);
+}
+
+.select option {
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+}
+
+/* ===== Toggle Button ===== */
+.toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    background: var(--color-glass-white);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+}
+
+.toggle-btn:hover {
+    color: var(--color-text-primary);
+    background: var(--color-glass-hover);
+}
+
+.toggle-btn.active {
+    color: var(--color-neon-purple);
+    border-color: var(--color-neon-purple);
+    background: rgba(178, 75, 255, 0.1);
+}
+
+/* ===== Badge ===== */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2xs) var(--space-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-full);
+    background: var(--gradient-primary);
+    color: var(--color-bg-primary);
+}
+
+/* ===== Divider ===== */
+.divider {
+    width: 100%;
+    height: 1px;
+    background: var(--gradient-primary);
+    opacity: 0.2;
+    margin: var(--space-lg) 0;
+}
+
+/* ===== Tooltip ===== */
+.tooltip {
+    position: relative;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-primary);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+    pointer-events: none;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-4px);
+}
