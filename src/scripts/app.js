@@ -16,6 +16,7 @@ class App {
         animations.init();
         calculator.init();
         percentageCalculator.init();
+        unitConverter.init();
 
         // Setup navigation
         this.setupNavigation();

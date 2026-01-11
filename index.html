@@ -133,6 +133,15 @@
                         <span class="nav-tab-label">آلة حاسبة</span>
                         <span class="nav-tab-sublabel">حسابات متقدمة</span>
                     </button>
+                    <button class="nav-tab" 
+                            data-section="converter" 
+                            role="tab" 
+                            aria-selected="false"
+                            aria-controls="converter-section">
+                        <span class="nav-tab-icon">📏</span>
+                        <span class="nav-tab-label">المحول</span>
+                        <span class="nav-tab-sublabel">تحويل الوحدات</span>
+                    </button>
                 </nav>
 
                 <!-- Percentage Section -->
@@ -275,6 +284,70 @@
                         </div>
                     </div>
                 </section>
+
+                <!-- Converter Section -->
+                <section id="converter-section" 
+                         class="section" 
+                         role="tabpanel" 
+                         aria-labelledby="المحول">
+                    
+                    <header class="section-header">
+                        <h1 class="section-title">محول الوحدات</h1>
+                        <p class="section-subtitle">تحويل دقيق وسريع بين الوحدات</p>
+                    </header>
+
+                    <!-- Category Buttons -->
+                    <div class="converter-categories">
+                        <button class="converter-category-btn active" data-category="length">
+                            <span>📏</span>
+                            <span>الطول</span>
+                        </button>
+                        <button class="converter-category-btn" data-category="mass">
+                            <span>⚖️</span>
+                            <span>الوزن</span>
+                        </button>
+                        <button class="converter-category-btn" data-category="storage">
+                            <span>💾</span>
+                            <span>البيانات</span>
+                        </button>
+                    </div>
+
+                    <!-- Converter Form -->
+                    <div class="converter-form">
+                        <div class="input-group">
+                            <label class="input-label" for="converter-input">القيمة</label>
+                            <input type="number" 
+                                   id="converter-input" 
+                                   class="input" 
+                                   placeholder="أدخل الرقم"
+                                   value="1"
+                                   step="any">
+                        </div>
+
+                        <div class="converter-selects">
+                            <div class="input-group">
+                                <label class="input-label" for="converter-from">من</label>
+                                <select id="converter-from" class="select"></select>
+                            </div>
+
+                            <button id="converter-swap" class="btn-swap" aria-label="تبديل الوحدات">
+                                ⇅
+                            </button>
+
+                            <div class="input-group">
+                                <label class="input-label" for="converter-to">إلى</label>
+                                <select id="converter-to" class="select"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Result Container -->
+                    <div class="result-container converter-result">
+                        <div class="result-label">النتيجة</div>
+                        <div id="converter-result" class="result-value">100</div>
+                        <div id="converter-formula" class="result-formula">1 m = 100 cm</div>
+                    </div>
+                </section>
             </div>
 
             <!-- Footer -->
@@ -297,6 +370,7 @@
     <script src="src/scripts/animations.js"></script>
     <script src="src/scripts/calculator.js"></script>
     <script src="src/scripts/percentage.js"></script>
+    <script src="src/scripts/converter.js"></script>
     <script src="src/scripts/app.js"></script>
     
     <script>

@@ -54,7 +54,7 @@
 /* ===== Container ===== */
 .container {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -88,11 +88,11 @@
 /* ===== Navigation Tabs ===== */
 .nav-tabs {
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     margin-bottom: var(--space-xl);
-    padding: var(--space-xs);
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: var(--radius-xl);
+    padding: var(--space-sm);
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: var(--radius-2xl);
     position: relative;
 }
 
@@ -124,18 +124,20 @@
 }
 
 .nav-tab-icon {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-3xl);
     line-height: 1;
+    margin-bottom: var(--space-2xs);
 }
 
 .nav-tab-label {
     font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
 }
 
 .nav-tab-sublabel {
     font-size: var(--font-size-xs);
     color: var(--color-text-muted);
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .nav-tab.active .nav-tab-sublabel {
