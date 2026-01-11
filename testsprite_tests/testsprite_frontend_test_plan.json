@@ -1,0 +1,339 @@
+[
+  {
+    "id": "TC001",
+    "title": "Basic Arithmetic Calculation",
+    "description": "Verify that the calculator performs basic arithmetic operations (addition, subtraction, multiplication, division) correctly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Input '3 + 5' using on-screen buttons."
+      },
+      {
+        "type": "action",
+        "description": "Press Enter key or click '=' button to calculate."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the displayed result is '8'."
+      },
+      {
+        "type": "action",
+        "description": "Clear input."
+      },
+      {
+        "type": "action",
+        "description": "Input '10 - 4' using keyboard shortcuts."
+      },
+      {
+        "type": "action",
+        "description": "Press Enter to calculate."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the displayed result is '6'."
+      },
+      {
+        "type": "action",
+        "description": "Clear input."
+      },
+      {
+        "type": "action",
+        "description": "Input '7 * 6' using keyboard."
+      },
+      {
+        "type": "action",
+        "description": "Calculate result."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the result is '42'."
+      },
+      {
+        "type": "action",
+        "description": "Clear input."
+      },
+      {
+        "type": "action",
+        "description": "Input '8 / 2' using buttons."
+      },
+      {
+        "type": "action",
+        "description": "Calculate result."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the result is '4'."
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Percentage Extraction Calculation",
+    "description": "Verify the calculator can extract percentage values accurately (e.g. calculate 20% of 150).",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Input '20%' followed by 'of 150' using buttons."
+      },
+      {
+        "type": "action",
+        "description": "Calculate the result."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the output is '30', which is 20% of 150."
+      },
+      {
+        "type": "action",
+        "description": "Clear input."
+      },
+      {
+        "type": "action",
+        "description": "Use keyboard to input equivalent expression for percentage extraction."
+      },
+      {
+        "type": "action",
+        "description": "Calculate and verify the correctness of result."
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Percentage Addition and Subtraction",
+    "description": "Validate addition and subtraction operations involving percentages (e.g. 100 + 10% equals 110).",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Input '100 + 10%' and calculate."
+      },
+      {
+        "type": "assertion",
+        "description": "Result should be '110'."
+      },
+      {
+        "type": "action",
+        "description": "Clear input."
+      },
+      {
+        "type": "action",
+        "description": "Input '250 - 15%' and calculate."
+      },
+      {
+        "type": "assertion",
+        "description": "Result should be '212.5'."
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Complex Arithmetic with Parentheses",
+    "description": "Ensure calculation respects operation precedence and parentheses correctly in nested expressions.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Input '(3 + 5) * 2' using buttons."
+      },
+      {
+        "type": "action",
+        "description": "Calculate result."
+      },
+      {
+        "type": "assertion",
+        "description": "Result should be '16'."
+      },
+      {
+        "type": "action",
+        "description": "Clear input."
+      },
+      {
+        "type": "action",
+        "description": "Input '3 + (5 * 2)' using keyboard."
+      },
+      {
+        "type": "action",
+        "description": "Calculate result."
+      },
+      {
+        "type": "assertion",
+        "description": "Result should be '13'."
+      },
+      {
+        "type": "action",
+        "description": "Clear input."
+      },
+      {
+        "type": "action",
+        "description": "Input nested parentheses expression '(2 + (3 * (4 + 1)))'."
+      },
+      {
+        "type": "action",
+        "description": "Calculate result."
+      },
+      {
+        "type": "assertion",
+        "description": "Result should be '17'."
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Automatic History Log Recording",
+    "description": "Check that every completed calculation is saved in the history log correctly and in sequence.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Perform calculation '5 + 10' and obtain result '15'."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the history log contains entry '5 + 10 = 15' at most recent position."
+      },
+      {
+        "type": "action",
+        "description": "Perform calculation '20 - 3' and verify result '17'."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the history log updated sequentially with new entry '20 - 3 = 17'."
+      },
+      {
+        "type": "action",
+        "description": "Clear input and perform another calculation '50 * 2'."
+      },
+      {
+        "type": "assertion",
+        "description": "History log should now have three entries in correct order."
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Keyboard Shortcut Input Mapping",
+    "description": "Ensure all supported keyboard shortcuts map correctly to calculator inputs without lag or missed entries.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Use keyboard to input digits 0-9."
+      },
+      {
+        "type": "assertion",
+        "description": "Each digit appears correctly in the input field."
+      },
+      {
+        "type": "action",
+        "description": "Use keyboard operators (+, -, *, /) and parentheses."
+      },
+      {
+        "type": "assertion",
+        "description": "Operators and parentheses appear correctly in input."
+      },
+      {
+        "type": "action",
+        "description": "Use Enter key to calculate and Escape key to clear input."
+      },
+      {
+        "type": "assertion",
+        "description": "Calculation triggers on Enter and input clears on Escape."
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "UI Responsiveness Across Devices",
+    "description": "Validate the UI layout and usability on desktop, tablet, and smartphone screen sizes, maintaining Neon Pulse theme clarity.",
+    "category": "ui",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open application in desktop browser window and verify UI elements are arranged and sized correctly."
+      },
+      {
+        "type": "assertion",
+        "description": "UI remains fully functional and visually clear with correct Neon Pulse theme."
+      },
+      {
+        "type": "action",
+        "description": "Resize window to tablet dimensions and verify UI adapts."
+      },
+      {
+        "type": "assertion",
+        "description": "All controls remain accessible and usable; layout adjusts for smaller screen."
+      },
+      {
+        "type": "action",
+        "description": "Open application on smartphone device or emulator."
+      },
+      {
+        "type": "assertion",
+        "description": "UI renders correctly with appropriate tap targets and visibility."
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Animation Trigger and Performance",
+    "description": "Verify that UI animations trigger appropriately on user interactions and do not cause performance or visual issues.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Click buttons and perform multiple calculations."
+      },
+      {
+        "type": "assertion",
+        "description": "Animations activate smoothly on button presses and input updates."
+      },
+      {
+        "type": "action",
+        "description": "Observe UI performance during rapid input sequences."
+      },
+      {
+        "type": "assertion",
+        "description": "No lag, flicker, or glitches occur during animations."
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Error Handling for Invalid Input",
+    "description": "Ensure application handles invalid inputs gracefully, providing appropriate feedback without crashing.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Input invalid characters or malformed expressions like '5 ++ 2' or incomplete parentheses."
+      },
+      {
+        "type": "action",
+        "description": "Attempt to calculate result."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that an error message or indication is shown and application does not crash."
+      },
+      {
+        "type": "action",
+        "description": "Input division by zero expression '10 / 0' and calculate."
+      },
+      {
+        "type": "assertion",
+        "description": "Application displays error or handles case without crashing."
+      }
+    ]
+  }
+]

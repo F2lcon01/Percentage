@@ -5,7 +5,7 @@
 
 class App {
     constructor() {
-        this.currentSection = 'percentage';
+        this.currentSection = 'calculator';
     }
 
     /**

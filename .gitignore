@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# TestSprite Temporary Files (Huge videos/raw logs)
+testsprite_tests/tmp/
+testsprite_tests/screenshots/
+testsprite_tests/videos/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Editor
+*.swp
+*.swo

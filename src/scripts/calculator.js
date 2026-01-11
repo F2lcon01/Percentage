@@ -118,7 +118,11 @@ class Calculator {
      * Render history to the DOM
      */
     renderHistory() {
-        if (!this.historyPanel) return;
+        // Dynamically get historyPanel if not already set
+        if (!this.historyPanel) {
+            this.historyPanel = document.getElementById('calc-history');
+            if (!this.historyPanel) return;
+        }
 
         if (this.history.length === 0) {
             this.historyPanel.innerHTML = `
@@ -166,15 +170,22 @@ class Calculator {
      * Toggle history panel visibility
      */
     toggleHistory() {
-        if (!this.historyPanel) return;
+        // Ensure historyPanel reference is valid
+        if (!this.historyPanel) {
+            this.historyPanel = document.getElementById('calc-history');
+            if (!this.historyPanel) return;
+        }
         
         const isHidden = this.historyPanel.classList.contains('hidden');
         
         if (isHidden) {
             this.historyPanel.classList.remove('hidden');
             this.historyPanel.classList.add('animate-fade-in-up');
+            // Re-render history when opening to ensure it's up to date
+            this.renderHistory();
         } else {
             this.historyPanel.classList.add('hidden');
+            this.historyPanel.classList.remove('animate-fade-in-up');
         }
     }
 
@@ -245,8 +256,8 @@ class Calculator {
                 e.preventDefault();
                 this.deleteLastCharacter();
             }
-            // Escape = Clear
-            else if (key === 'Escape') {
+            // Escape or Delete = Clear
+            else if (key === 'Escape' || key === 'Delete') {
                 e.preventDefault();
                 this.clearDisplay();
             }
